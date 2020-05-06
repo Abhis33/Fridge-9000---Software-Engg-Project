@@ -25,8 +25,6 @@ SECRET_KEY = 'f+(mf+lj@tkz%^5mg5mw@bj@cswtet^qj7###l#-g+e@ptrbx@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-PROD = False
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -40,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'refrigerator_app',
-    'users',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,28 +76,16 @@ WSGI_APPLICATION = 'Fridge_9000.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-if(PROD):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'ref_updated_10_31',
-            'USER': 'admin',
-            'PASSWORD': 'password',
-            'HOST': 'refrigerator-db.c4p7z07xl4sc.us-east-1.rds.amazonaws.com',
-            'PORT': '3306',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ref_db',
-        'USER': 'root',
+        'NAME': 'ref_updated_10_31',
+        'USER': 'admin',
         'PASSWORD': 'password',
-        'HOST': 'mysql-db',
+        'HOST': 'refrigerator-db.c4p7z07xl4sc.us-east-1.rds.amazonaws.com',
         'PORT': '3306',
-        }
     }
+}
 
 
 # Password validation
@@ -126,13 +112,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -146,8 +132,6 @@ STATICFILES_DIRS = (
     '/Django_refrigerator_project/static',
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'fridge_init'   #need this to redirect to home from login
+LOGIN_REDIRECT_URL = 'fridge'   #need this to redirect to home from login
 LOGIN_URL = 'login'         #need this for login

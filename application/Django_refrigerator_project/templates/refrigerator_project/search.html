@@ -1,4 +1,5 @@
-{% extends 'refrigerator_project/base.html' %} {% block content %}
+{% extends 'refrigerator_project/base.html' %}
+{% block content %}
 
 <p>Welcome To Search Section</p>
 <div>
@@ -9,7 +10,7 @@
     </form>
     {% for each in sr %}
     <tr>
-        <td>Item Name:{{ each.name }} | Id: {{ each.id }} | Calories:{{ each.calories }}</td>
+        <td>Item Name:{{ each.itemname }} | Id: {{ each.itemid }} | Calories:{{ each.calories }}</td>
         <br></br>
     </tr>
     {% endfor %}
