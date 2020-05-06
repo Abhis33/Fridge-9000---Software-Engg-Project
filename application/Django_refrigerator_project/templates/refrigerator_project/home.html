@@ -1,49 +1,45 @@
-{% extends 'refrigerator_project/base.html' %} {% load static %} {% block content %}
-
-<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% extends 'refrigerator_project/base.html' %}
+{% load static %}
+{% block content %}
+<!-- <body>
+        <p>Welcome To Refrigerator App</p>
+        <a href="/upload">Upload Image</a><br>
+        <a href="/search">Search Item</a><br>
+        <div>
+            <p>Items in Inventory: </p>
+            {% for each in inventory_items %}
+            <tr> 
+                <td>Item name:{{ each.itemname }} | Item Id: {{ each.itemid }} | Calories: {{ each.calories }}</td>
+                <br></br>
+            </tr>
+            {% endfor %}
+        </div>
+    </body> -->
 
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center" style="padding-top: 30px;">
-        <img src="{% static '/logo_icons/fridge_black.png' %}" alt="fridge image"
-            style="height: 300px; vertical-align: middle;">
+    <div class="row d-flex justify-content-center" style="padding-top: 25px;">
+        <img src="{% static 'fridge_black.png' %}" alt="josh image" style="height: 300px; vertical-align: middle;">
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col">
-            <h1 class="text-center" style="margin-top: 20px;">Fridge App 9000</h1>
-        </div>
+        <h1 class="text-center">Welcome to the Fridge App 9000!</h1>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col">
-            <h3 class="text-center text-muted" style="font-size: 1em; margin-bottom: 15px;">Manage your fridge with us.</h2>
-        </div>
+        <h3 class="text-center">Here you can manage your refrigerator.</h2>
     </div>
     <div class="row d-flex justify-content-center">
         <div style="width: 70%;">
             {% if user.is_authenticated %}
-            <a href="{% url 'fridge' %}" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Already
-                Logged In</a>
+            <a href="{% url 'fridge' %}" class="btn btn-primary btn-lg btn-block" role="button"
+                aria-pressed="true">Already Logged In</a>
             {% else %}
-            <a href="{% url 'login' %}" class="btn btn-info btn-lg btn-block" role="button"
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg btn-block" role="button"
                 aria-pressed="true">Login</a>
             {% endif %}
         </div>
+        <!-- <a href="{% url 'login' %}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Login</a> -->
     </div>
     <div class="row d-flex justify-content-center" style="padding-top: 5px;">
-        <div style="width: 30%;">
-            <a href="{% url 'register' %}" class="btn btn-dark btn-block" role="button" aria-pressed="true">Sign Up</a>
-        </div>
+        <a href="{% url 'register' %}" class="btn btn-secondary" role="button" aria-pressed="true">Sign Up</a>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>This application is a product of a SFSU instructional course and is not
-                    intended for official use.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
 {% endblock %}
